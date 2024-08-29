@@ -20,17 +20,23 @@ public class Connector {
 
         Connection connection = null;
 
+        String banana = "test879877";
         try {
             connection = DriverManager.getConnection(url, user, passwd);
             System.out.println("Conexão estabelecida com sucesso!");
 
+
             Statement statement = connection.createStatement();
             String sql = "select * from test";
+            statement.executeUpdate("insert into test " + "values ('" + banana + "', '" + banana + "', '" + banana + "');");
             ResultSet resultSet = statement.executeQuery(sql);
+
+
 
             while (resultSet.next()) {
                 System.out.println("Nome: " + resultSet.getString("name"));
-                System.out.println("Idade: " + resultSet.getString("idade"));
+                System.out.println("DadoTest: " + resultSet.getString("dado"));
+                System.out.println("Pao: " + resultSet.getString("pao"));
             }
         }
         catch (SQLException e) {
