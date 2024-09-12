@@ -5,6 +5,7 @@
 package Restaurante;
 
 import com.mycompany.restaurante_interface.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -220,6 +221,20 @@ public class Funcionarios extends javax.swing.JFrame {
 
     private void jbtnprontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnprontoActionPerformed
         // TODO add your handling code here:
+        String cargo = jtxcargo_func.getText();
+        String cpf = jtxcpf_func.getText();
+        String data = jtxdata_func.getText();
+        
+        String email = jtxemail_func.getText();
+        String endereco  = jtxendereco_func.getText();
+        String  idade = jtxidade_func.getText();
+        String  nome = jtxnome_func.getText();
+        String  telefone = jtxtelefe_func.getText();
+        
+        ConFunc connection = new ConFunc();
+        connection.criar(cargo, cpf, data, email, endereco, idade, nome, telefone);
+        
+        // JOptionPane.showMessageDialog(this, "Faz o L Filho da Puta");
     }//GEN-LAST:event_jbtnprontoActionPerformed
 
     private void Voltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Voltar2ActionPerformed

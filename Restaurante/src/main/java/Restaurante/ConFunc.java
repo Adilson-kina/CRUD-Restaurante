@@ -10,14 +10,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 
-public class Connector {
-    static String url = "jdbc:mysql://localhost:3306/test";
+public class ConFunc {
+    static String url = "jdbc:mysql://localhost:3306/Restaurante";
     static String user = "root";
     static String pwd = "1234";
     
     static Connection conn = null;
     
-    public Connector(){
+    public ConFunc(){
         try {
                 conn = DriverManager.getConnection(url, user, pwd);
                 System.out.println("Conexão estabelecida com sucesso!");
@@ -29,14 +29,21 @@ public class Connector {
         
 
     }
-    public static void criar(){
+    public static void criar(String cargo,String cpf,String data,String email,String endereco,String idade,String nome,String telefone){
         try{
-            String set = "insert into test (name) values (?, ?, ?, ?, ?, ?, ?);";
+            String set = "insert into Funcionarios (Cargo, CPF, Email, Endereco, Idade, Nome, Telefone) values (?, ?, ?, ?, ?, ?, ?, ?);";
             //Statement statement = conn.createStatement();
             PreparedStatement stmt = conn.prepareStatement(set);
             //statement.executeUpdate("insert into test (name) values (?, ?, ?, ?, ?, ?, ?);");
-            stmt.execute();
+            stmt.setString(1, cargo);
+            stmt.setString(2, cpf);
+            stmt.setString(3, email);
+            stmt.setString(4, endereco);
+            stmt.setString(5, idade);
+            stmt.setString(6, nome);
+            stmt.setString(7, telefone);
             
+            stmt.execute();
         }
         catch(SQLException e){
             e.printStackTrace();
