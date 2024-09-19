@@ -270,8 +270,8 @@ public class Funcionarios extends javax.swing.JFrame {
         Connector connector = new Connector();
         Connection connection = connector.getConnection();
 
-        String sql = "insert into Funcionarios (Nome, CPF, Telefone, Email, Endereco, Idade, Data_contatacao, Cargo, Sexo, ID_filial) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+        String sql = "insert into Funcionarios (Nome, CPF, Telefone, Email, Endereco, Idade, Data_contatacao, Cargo, Sexo) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        //String sql = "insert into Funcionarios (ID_filial) values (?)";
         try{
             PreparedStatement pstm = connection.prepareStatement(sql);
             pstm.setString(1, jtxnome_func.getText());
@@ -283,15 +283,14 @@ public class Funcionarios extends javax.swing.JFrame {
             pstm.setString(7, jtxdata_func.getText());
             pstm.setString(8, jtxcargo_func.getText());
             pstm.setString(9, jtxsexo_func.getText());
-            pstm.setString(10, jtxid_filial_func.getText());
+            //pstm.setString(10, jtxid_filial_func.getText());
 
             pstm.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
         }
-        
-        // JOptionPane.showMessageDialog(this, "Faz o L Filho da Puta");
-    }//GEN-LAST:event_jbtnprontoActionPerformed
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void Voltar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Voltar2ActionPerformed
         // TODO add your handling code here:
