@@ -4,8 +4,12 @@
  */
 package Restaurante;
 
-import com.mycompany.restaurante_interface.*;
-import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+//import com.mycompany.restaurante_interface.*;
+//import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,6 +60,13 @@ public class Funcionarios extends javax.swing.JFrame {
         jtxidade_func = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtxtelefe_func = new javax.swing.JTextPane();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jLabel9 = new javax.swing.JLabel();
+        jtxsexo_func = new javax.swing.JTextPane();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jLabel10 = new javax.swing.JLabel();
+        jtxid_filial_func = new javax.swing.JTextPane();
+
         Voltar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -84,6 +95,10 @@ public class Funcionarios extends javax.swing.JFrame {
 
         jLabel3.setText("CPF:");
 
+        jLabel9.setText("Sexo");
+
+        jLabel10.setText("Id Filial");
+
         jbtnpronto.setText("Pronto");
         jbtnpronto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,6 +119,10 @@ public class Funcionarios extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jtxendereco_func);
 
         jScrollPane2.setViewportView(jtxcpf_func);
+
+        jScrollPane9.setViewportView(jtxsexo_func);
+
+        jScrollPane10.setViewportView(jtxid_filial_func);
 
         jLabel2.setText("Email:");
 
@@ -136,6 +155,8 @@ public class Funcionarios extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,6 +168,8 @@ public class Funcionarios extends javax.swing.JFrame {
                             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jbtnlimpar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -195,6 +218,12 @@ public class Funcionarios extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbtnpronto)
@@ -217,6 +246,8 @@ public class Funcionarios extends javax.swing.JFrame {
         jtxidade_func.setText("");
         jtxnome_func.setText("");
         jtxtelefe_func.setText("");
+        jtxsexo_func.setText("");
+        jtxid_filial_func.setText("");
     }//GEN-LAST:event_jbtnlimparActionPerformed
 
     private void jbtnprontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnprontoActionPerformed
@@ -224,15 +255,40 @@ public class Funcionarios extends javax.swing.JFrame {
         String cargo = jtxcargo_func.getText();
         String cpf = jtxcpf_func.getText();
         String data = jtxdata_func.getText();
-        
         String email = jtxemail_func.getText();
         String endereco  = jtxendereco_func.getText();
-        String  idade = jtxidade_func.getText();
-        String  nome = jtxnome_func.getText();
-        String  telefone = jtxtelefe_func.getText();
-        
-        ConFunc connection = new ConFunc();
-        connection.criar(cargo, cpf, data, email, endereco, idade, nome, telefone);
+        String idade = jtxidade_func.getText();
+        String nome = jtxnome_func.getText();
+        String telefone = jtxtelefe_func.getText();
+        String sexo = jtxsexo_func.getText();
+        String id_filial = jtxid_filial_func.getText();
+        if(!id_filial.isEmpty()){
+            int id_filialInt = Integer.parseInt(id_filial);
+        }
+
+
+        Connector connector = new Connector();
+        Connection connection = connector.getConnection();
+
+        String sql = "insert into Funcionarios (Nome, CPF, Telefone, Email, Endereco, Idade, Data_contatacao, Cargo, Sexo, ID_filial) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try{
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setString(1, jtxnome_func.getText());
+            pstm.setString(2, jtxcpf_func.getText());
+            pstm.setString(3, jtxtelefe_func.getText());
+            pstm.setString(4, jtxemail_func.getText());
+            pstm.setString(5, jtxendereco_func.getText());
+            pstm.setString(6, jtxidade_func.getText());
+            pstm.setString(7, jtxdata_func.getText());
+            pstm.setString(8, jtxcargo_func.getText());
+            pstm.setString(9, jtxsexo_func.getText());
+            pstm.setString(10, jtxid_filial_func.getText());
+
+            pstm.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         
         // JOptionPane.showMessageDialog(this, "Faz o L Filho da Puta");
     }//GEN-LAST:event_jbtnprontoActionPerformed
@@ -290,6 +346,8 @@ public class Funcionarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -298,6 +356,8 @@ public class Funcionarios extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JButton jbtnlimpar;
     private javax.swing.JButton jbtnpronto;
@@ -309,5 +369,8 @@ public class Funcionarios extends javax.swing.JFrame {
     private javax.swing.JTextPane jtxidade_func;
     private javax.swing.JTextPane jtxnome_func;
     private javax.swing.JTextPane jtxtelefe_func;
+    private javax.swing.JTextPane jtxsexo_func;
+    private javax.swing.JTextPane jtxid_filial_func;
+
     // End of variables declaration//GEN-END:variables
 }

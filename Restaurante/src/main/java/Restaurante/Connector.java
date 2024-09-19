@@ -10,6 +10,32 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.PreparedStatement;
 
+public class Connector{
+    static String url = "jdbc:mysql://localhost:3306/Restaurante";
+    static String user = "root";
+    static String pwd = "1234";
+
+    static Connection conn = null;
+
+    public Connection getConnection(){
+        try{
+            if(conn == null){
+                conn = DriverManager.getConnection(url, user, pwd);
+                System.out.println("Conexao bem sucedida");
+                return conn;
+            }
+            else{
+                System.out.println("Conexao ja estabelecida");
+                return conn;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+}
+/*
 public class Connector {
     static String url = "jdbc:mysql://localhost:3306/test";
     static String user = "root";

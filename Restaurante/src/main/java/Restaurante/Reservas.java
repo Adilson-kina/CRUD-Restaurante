@@ -4,7 +4,7 @@
  */
 package Restaurante;
 
-import com.mycompany.restaurante_interface.*;
+//import com.mycompany.restaurante_interface.*;
 
 /**
  *
