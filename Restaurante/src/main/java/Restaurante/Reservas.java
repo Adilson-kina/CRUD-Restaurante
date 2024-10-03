@@ -6,6 +6,10 @@ package Restaurante;
 
 //import com.mycompany.restaurante_interface.*;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /**
  *
  * @author CAMARGO
@@ -170,6 +174,33 @@ public class Reservas extends javax.swing.JFrame {
 
     private void jbtnprontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnprontoActionPerformed
         // TODO add your handling code here:
+
+        String id_cliente = jtxID_cliente_reserva.getText();
+        String capacidade = jtxcapacidade_reserva.getText();
+        String data_reserva = jtxdata_reserva.getText();
+        String mesa = jtxmesa_reserva.getText();
+        //TO add if Filial
+
+        Connector connector = new Connector();
+        Connection connection = connector.getConnection();
+
+        String sql = "insert into Reservas (Data_reserva, ID_cLiente, Mesa, Capacidade) values (?, ?, ?, ?)";
+        //String sql = "insert into Reservas (Data_reserva, ID_cLiente, Mesa, ID_filial, Capacidade) values (?, ?, ?, ?)";
+
+        try{
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setString(1, data_reserva);
+            pstm.setString(2, id_cliente);
+            pstm.setString(3, mesa);
+            pstm.setString(4, capacidade);
+            //pstm.setString(5, endereco);
+
+            pstm.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+
     }//GEN-LAST:event_jbtnprontoActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed

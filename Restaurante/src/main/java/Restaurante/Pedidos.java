@@ -4,6 +4,10 @@
  */
 package Restaurante;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /**
  *
  * @author CAMARGO
@@ -174,6 +178,13 @@ public class Pedidos extends javax.swing.JFrame {
 
     private void jbtnprontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnprontoActionPerformed
         // TODO add your handling code here:
+
+        jtxprato.getText();
+        jtxvalor.getText();
+        jtxdescrição.getText();
+
+
+
     }//GEN-LAST:event_jbtnprontoActionPerformed
 
     private void jTextpratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextpratosActionPerformed

@@ -4,6 +4,10 @@
  */
 package Restaurante;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /**
  *
  * @author CAMARGO
@@ -215,6 +219,37 @@ public class Cad_Cliente extends javax.swing.JFrame {
 
     private void jbtnprontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnprontoActionPerformed
         // TODO add your handling code here:
+        String cpf = jtxcpf_client.getText();
+        String data_cadastro = jtxdata_client.getText();
+        String email = jtxemail_client.getText();
+        String endereco = jtxendereco_client.getText();
+        String idade = jtxidade_client.getText();
+        String nome = jtxnome_client.getText();
+        String sexo = jtxsexo__client.getText();
+        String telefone = jtxtelefe_client.getText();
+
+
+        Connector connector = new Connector();
+        Connection connection = connector.getConnection();
+
+        String sql = "insert into Clientes (Nome, CPF, Telefone, Email, Endereco, Idade, Data_cadastro, Sexo) values (?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try{
+            PreparedStatement pstm = connection.prepareStatement(sql);
+            pstm.setString(1, nome);
+            pstm.setString(2, cpf);
+            pstm.setString(3, telefone);
+            pstm.setString(4, email);
+            pstm.setString(5, endereco);
+            pstm.setString(6, idade);
+            pstm.setString(7, data_cadastro);
+            pstm.setString(8, sexo);
+
+            pstm.executeUpdate();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_jbtnprontoActionPerformed
 
     private void VoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VoltarActionPerformed

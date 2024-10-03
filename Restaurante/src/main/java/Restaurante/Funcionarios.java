@@ -250,6 +250,16 @@ public class Funcionarios extends javax.swing.JFrame {
         jtxid_filial_func.setText("");
     }//GEN-LAST:event_jbtnlimparActionPerformed
 
+    private int toInt(String check){
+        if (check.isBlank()){
+            return 0;
+        }
+        else{
+            int parse = Integer.parseInt(check);
+            return parse;
+        }
+    }
+
     private void jbtnprontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnprontoActionPerformed
         // TODO add your handling code here:
         String cargo = jtxcargo_func.getText();
@@ -262,28 +272,26 @@ public class Funcionarios extends javax.swing.JFrame {
         String telefone = jtxtelefe_func.getText();
         String sexo = jtxsexo_func.getText();
         String id_filial = jtxid_filial_func.getText();
-        if(!id_filial.isEmpty()){
-            int id_filialInt = Integer.parseInt(id_filial);
-        }
+        int id_filialInt = toInt(id_filial);
 
 
         Connector connector = new Connector();
         Connection connection = connector.getConnection();
 
-        String sql = "insert into Funcionarios (Nome, CPF, Telefone, Email, Endereco, Idade, Data_contatacao, Cargo, Sexo) values (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        //String sql = "insert into Funcionarios (ID_filial) values (?)";
+        String sql = "insert into Funcionarios (Nome, CPF, Telefone, Email, Endereco, Idade, Data_contatacao, Cargo, Sexo, ID_filial) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
         try{
             PreparedStatement pstm = connection.prepareStatement(sql);
-            pstm.setString(1, jtxnome_func.getText());
-            pstm.setString(2, jtxcpf_func.getText());
-            pstm.setString(3, jtxtelefe_func.getText());
-            pstm.setString(4, jtxemail_func.getText());
-            pstm.setString(5, jtxendereco_func.getText());
-            pstm.setString(6, jtxidade_func.getText());
-            pstm.setString(7, jtxdata_func.getText());
-            pstm.setString(8, jtxcargo_func.getText());
-            pstm.setString(9, jtxsexo_func.getText());
-            //pstm.setString(10, jtxid_filial_func.getText());
+            pstm.setString(1, nome);
+            pstm.setString(2, cpf);
+            pstm.setString(3, telefone);
+            pstm.setString(4, email);
+            pstm.setString(5, endereco);
+            pstm.setString(6, idade);
+            pstm.setString(7, data);
+            pstm.setString(8, cargo);
+            pstm.setString(9, sexo);
+            pstm.setInt(10, id_filialInt);
 
             pstm.executeUpdate();
         }
