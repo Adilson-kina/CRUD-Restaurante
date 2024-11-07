@@ -73,8 +73,8 @@ public class ClienteDAO {
         
         return lista;
     }
-    public ArrayList<ClienteDTO> pesquisaEspecifica(String nome){
-        String sql = "SELECT * FROM Clientes where nome like '%" + nome + "%'";
+    public ArrayList<ClienteDTO> pesquisaEspecifica(String valor, String item){
+        String sql = "SELECT * FROM Clientes where " + item + " like '%" + valor + "%'";
         conn = new ConexãoDAO().connectorDB();
         try {
             pstm = conn.prepareStatement(sql);

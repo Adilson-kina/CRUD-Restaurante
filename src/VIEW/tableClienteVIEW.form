@@ -35,7 +35,9 @@
                       <Component id="NOME" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Component id="jtxPesquisa_Nome_Clientes" min="-2" pref="210" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
                       <Component id="btnPesquisar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -55,6 +57,7 @@
                   <Component id="btnPesquisar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jtxPesquisa_Nome_Clientes" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="NOME" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -184,6 +187,26 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Nome"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="9">
+            <StringItem index="0" value="ID_cliente"/>
+            <StringItem index="1" value="CPF"/>
+            <StringItem index="2" value="Nome"/>
+            <StringItem index="3" value="Sexo"/>
+            <StringItem index="4" value="Idade"/>
+            <StringItem index="5" value="Endereco"/>
+            <StringItem index="6" value="Email"/>
+            <StringItem index="7" value="Telefone"/>
+            <StringItem index="8" value="Data_cadastro"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
