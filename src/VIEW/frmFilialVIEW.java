@@ -7,6 +7,7 @@ import DTO.FilialDTO;
  *
  * @author Gabriel Possato
  */
+
 public class frmFilialVIEW extends javax.swing.JFrame {
 
     /**
@@ -39,6 +40,7 @@ public class frmFilialVIEW extends javax.swing.JFrame {
         btnVoltar = new javax.swing.JButton();
         btnEnviar_Filiais = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
+        btnVerTabela = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,7 +58,6 @@ public class frmFilialVIEW extends javax.swing.JFrame {
         ENDEREÇO.setText("Endereço:");
 
         jtxEndereço_Filiais.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
-        jtxEndereço_Filiais.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jtxEndereço_Filiais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxEndereço_FiliaisActionPerformed(evt);
@@ -67,7 +68,6 @@ public class frmFilialVIEW extends javax.swing.JFrame {
         EMAIL.setText("Email:");
 
         jtxEmail_Filiais.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
-        jtxEmail_Filiais.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jtxEmail_Filiais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxEmail_FiliaisActionPerformed(evt);
@@ -81,21 +81,18 @@ public class frmFilialVIEW extends javax.swing.JFrame {
         AVALIAÇÃO.setText("Avaliação:");
 
         jtxQntdMesas_Filiais.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
-        jtxQntdMesas_Filiais.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jtxQntdMesas_Filiais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtxQntdMesas_FiliaisActionPerformed(evt);
             }
         });
 
-        jtxTelefone_Filiais.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         try {
             jtxTelefone_Filiais.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) #####-####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
 
-        jtxAvaliação_Filiais.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         try {
             jtxAvaliação_Filiais.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##,##")));
         } catch (java.text.ParseException ex) {
@@ -129,6 +126,15 @@ public class frmFilialVIEW extends javax.swing.JFrame {
             }
         });
 
+        btnVerTabela.setBackground(new java.awt.Color(0, 153, 153));
+        btnVerTabela.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        btnVerTabela.setText("VER TABELA");
+        btnVerTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTabelaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,12 +145,6 @@ public class frmFilialVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnEnviar_Filiais)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnLimpar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnVoltar))
                             .addComponent(ENDEREÇO)
                             .addComponent(EMAIL)
                             .addComponent(TELEFONE)
@@ -154,11 +154,19 @@ public class frmFilialVIEW extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtxQntdMesas_Filiais, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                            .addComponent(jtxEndereço_Filiais, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
-                            .addComponent(jtxEmail_Filiais, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
+                            .addComponent(jtxQntdMesas_Filiais)
+                            .addComponent(jtxEndereço_Filiais)
+                            .addComponent(jtxEmail_Filiais)
                             .addComponent(jtxTelefone_Filiais)
-                            .addComponent(jtxAvaliação_Filiais))))
+                            .addComponent(jtxAvaliação_Filiais)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEnviar_Filiais)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVerTabela)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVoltar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -189,7 +197,8 @@ public class frmFilialVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar_Filiais)
                     .addComponent(btnLimpar)
-                    .addComponent(btnVoltar))
+                    .addComponent(btnVoltar)
+                    .addComponent(btnVerTabela))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -209,13 +218,11 @@ public class frmFilialVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxQntdMesas_FiliaisActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-                
         dispose();
         new LoginVIEW().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        
         jtxAvaliação_Filiais.setText("");
         jtxEmail_Filiais.setText("");
         jtxEndereço_Filiais.setText("");
@@ -224,25 +231,13 @@ public class frmFilialVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEnviar_FiliaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar_FiliaisActionPerformed
-        String Avaliação_FiliaisVIEW, Email_FiliaisVIEW, Endereço_FiliaisVIEW, Telefone_FiliaisVIEW;
-        int QntdMesas_FiliaisVIEW;
-
-        Avaliação_FiliaisVIEW = jtxAvaliação_Filiais.getText();
-        Email_FiliaisVIEW = jtxEmail_Filiais.getText();
-        Endereço_FiliaisVIEW = jtxEndereço_Filiais.getText();
-        Telefone_FiliaisVIEW = jtxTelefone_Filiais.getText();
-        QntdMesas_FiliaisVIEW = Integer.parseInt(jtxQntdMesas_Filiais.getText());
-
-        FilialDTO objFilialDTO = new FilialDTO();
-        objFilialDTO.setAvaliação_FiliaisDTO(Avaliação_FiliaisVIEW);
-        objFilialDTO.setEmail_FiliaisDTO(Email_FiliaisVIEW);
-        objFilialDTO.setEndereço_FiliaisDTO(Endereço_FiliaisVIEW);
-        objFilialDTO.setQtndMesas_FiliaisDTO(QntdMesas_FiliaisVIEW);
-        objFilialDTO.setTelefone_FiliaisDTO(Telefone_FiliaisVIEW);
-                                
-        FilialDAO objFilialDAO = new FilialDAO();
-        objFilialDAO.cadastrarFilial(objFilialDTO);
+        cadastrarFiliais();
     }//GEN-LAST:event_btnEnviar_FiliaisActionPerformed
+
+    private void btnVerTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTabelaActionPerformed
+
+        new tableFilialVIEW().setVisible(true);
+    }//GEN-LAST:event_btnVerTabelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,6 +283,7 @@ public class frmFilialVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel TÍTULO;
     private javax.swing.JButton btnEnviar_Filiais;
     private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnVerTabela;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JFormattedTextField jtxAvaliação_Filiais;
     private javax.swing.JTextField jtxEmail_Filiais;
@@ -295,4 +291,25 @@ public class frmFilialVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField jtxQntdMesas_Filiais;
     private javax.swing.JFormattedTextField jtxTelefone_Filiais;
     // End of variables declaration//GEN-END:variables
+
+    private void cadastrarFiliais() {
+        String Avaliação_FiliaisVIEW, Email_FiliaisVIEW, Endereço_FiliaisVIEW, Telefone_FiliaisVIEW;
+        int QntdMesas_FiliaisVIEW;
+
+        Avaliação_FiliaisVIEW = jtxAvaliação_Filiais.getText();
+        Email_FiliaisVIEW = jtxEmail_Filiais.getText();
+        Endereço_FiliaisVIEW = jtxEndereço_Filiais.getText();
+        Telefone_FiliaisVIEW = jtxTelefone_Filiais.getText();
+        QntdMesas_FiliaisVIEW = Integer.parseInt(jtxQntdMesas_Filiais.getText());
+
+        FilialDTO objFilialDTO = new FilialDTO();
+        objFilialDTO.setAvaliação_FiliaisDTO(Avaliação_FiliaisVIEW);
+        objFilialDTO.setEmail_FiliaisDTO(Email_FiliaisVIEW);
+        objFilialDTO.setEndereço_FiliaisDTO(Endereço_FiliaisVIEW);
+        objFilialDTO.setQtndMesas_FiliaisDTO(QntdMesas_FiliaisVIEW);
+        objFilialDTO.setTelefone_FiliaisDTO(Telefone_FiliaisVIEW);
+                                
+        FilialDAO objFilialDAO = new FilialDAO();
+        objFilialDAO.cadastrarFilial(objFilialDTO);
+    }
 }

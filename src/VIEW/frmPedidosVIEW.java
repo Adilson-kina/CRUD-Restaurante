@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VIEW;
 
 import DAO.PedidosDAO;
@@ -9,8 +5,9 @@ import DTO.PedidosDTO;
 
 /**
  *
- * @author gabri
+ * @author Gabriel Possato
  */
+
 public class frmPedidosVIEW extends javax.swing.JFrame {
 
     /**
@@ -47,6 +44,7 @@ public class frmPedidosVIEW extends javax.swing.JFrame {
         PRATO = new javax.swing.JLabel();
         jtxIDPrato_Pedidos = new javax.swing.JTextField();
         jtxIDBebida_Pedidos = new javax.swing.JTextField();
+        btnVerTabela = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -159,6 +157,15 @@ public class frmPedidosVIEW extends javax.swing.JFrame {
             }
         });
 
+        btnVerTabela.setBackground(new java.awt.Color(0, 153, 153));
+        btnVerTabela.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        btnVerTabela.setText("VER TABELA");
+        btnVerTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTabelaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,18 +179,12 @@ public class frmPedidosVIEW extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(PRATO)
                             .addComponent(BEBIDA)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnEnviar_Pedidos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnLimpar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnVoltar))
                             .addComponent(CLIENTE)
                             .addComponent(VALOR)
                             .addComponent(PAGAMENTO)
                             .addComponent(ENDEREÇO)
                             .addComponent(DATA_PEDIDO))
-                        .addGap(0, 116, Short.MAX_VALUE))
+                        .addGap(0, 241, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +193,15 @@ public class frmPedidosVIEW extends javax.swing.JFrame {
                             .addComponent(jtxIDCliente_Pedidos)
                             .addComponent(jtxValor_Pedidos)
                             .addComponent(jtxPagamento_Pedidos)
-                            .addComponent(jtxEndereço_Pedidos))))
+                            .addComponent(jtxEndereço_Pedidos)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEnviar_Pedidos)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVerTabela)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVoltar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -231,7 +240,8 @@ public class frmPedidosVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar_Pedidos)
                     .addComponent(btnLimpar)
-                    .addComponent(btnVoltar))
+                    .addComponent(btnVoltar)
+                    .addComponent(btnVerTabela))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -259,7 +269,6 @@ public class frmPedidosVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxIDBebida_PedidosActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-                
         dispose();
         new LoginVIEW().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
@@ -275,30 +284,12 @@ public class frmPedidosVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEnviar_PedidosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar_PedidosActionPerformed
-        String DataPedido_PedidosVIEW, Endereço_PedidosVIEW, Pagamento_PedidosVIEW, Valor_PedidosVIEW;
-        int IDBebida_PedidosVIEW, IDCliente_PedidosVIEW, IDPrato_PedidosVIEW;
-        
-        DataPedido_PedidosVIEW = jtxDataPedido_Pedidos.getText();
-        Endereço_PedidosVIEW = jtxEndereço_Pedidos.getText();
-        Pagamento_PedidosVIEW = jtxPagamento_Pedidos.getText();
-        Valor_PedidosVIEW = jtxValor_Pedidos.getText();
-        IDBebida_PedidosVIEW = Integer.parseInt(jtxIDBebida_Pedidos.getText());
-        IDPrato_PedidosVIEW = Integer.parseInt(jtxIDPrato_Pedidos.getText());
-        IDCliente_PedidosVIEW = Integer.parseInt(jtxIDCliente_Pedidos.getText());
-        
-        PedidosDTO objPedidosDTO = new PedidosDTO();
-        
-        objPedidosDTO.setDataPedido_PedidosDTO(DataPedido_PedidosVIEW);
-        objPedidosDTO.setEndereço_PedidosDTO(Endereço_PedidosVIEW);
-        objPedidosDTO.setIDBebida_PedidosDTO(IDBebida_PedidosVIEW);
-        objPedidosDTO.setIDCliente_PedidosDTO(IDCliente_PedidosVIEW);
-        objPedidosDTO.setIDPrato_PedidosDTO(IDPrato_PedidosVIEW);
-        objPedidosDTO.setPagamento_PedidosDTO(Pagamento_PedidosVIEW);
-        objPedidosDTO.setValor_PedidosDTO(Valor_PedidosVIEW);
-        
-        PedidosDAO objPedidosDAO = new PedidosDAO();
-        objPedidosDAO.cadastrarPedido(objPedidosDTO);
+        cadastrarPedidos();
     }//GEN-LAST:event_btnEnviar_PedidosActionPerformed
+
+    private void btnVerTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTabelaActionPerformed
+        new tablePedidosVIEW().setVisible(true);
+    }//GEN-LAST:event_btnVerTabelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,6 +337,7 @@ public class frmPedidosVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel VALOR;
     private javax.swing.JButton btnEnviar_Pedidos;
     private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnVerTabela;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JFormattedTextField jtxDataPedido_Pedidos;
     private javax.swing.JTextField jtxEndereço_Pedidos;
@@ -355,4 +347,30 @@ public class frmPedidosVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField jtxPagamento_Pedidos;
     private javax.swing.JFormattedTextField jtxValor_Pedidos;
     // End of variables declaration//GEN-END:variables
+
+    private void cadastrarPedidos() {
+        String DataPedido_PedidosVIEW, Endereço_PedidosVIEW, Pagamento_PedidosVIEW, Valor_PedidosVIEW;
+        int IDBebida_PedidosVIEW, IDCliente_PedidosVIEW, IDPrato_PedidosVIEW;
+        
+        DataPedido_PedidosVIEW = jtxDataPedido_Pedidos.getText();
+        Endereço_PedidosVIEW = jtxEndereço_Pedidos.getText();
+        Pagamento_PedidosVIEW = jtxPagamento_Pedidos.getText();
+        Valor_PedidosVIEW = jtxValor_Pedidos.getText();
+        IDBebida_PedidosVIEW = Integer.parseInt(jtxIDBebida_Pedidos.getText());
+        IDPrato_PedidosVIEW = Integer.parseInt(jtxIDPrato_Pedidos.getText());
+        IDCliente_PedidosVIEW = Integer.parseInt(jtxIDCliente_Pedidos.getText());
+        
+        PedidosDTO objPedidosDTO = new PedidosDTO();
+        
+        objPedidosDTO.setDataPedido_PedidosDTO(DataPedido_PedidosVIEW);
+        objPedidosDTO.setEndereço_PedidosDTO(Endereço_PedidosVIEW);
+        objPedidosDTO.setIDBebida_PedidosDTO(IDBebida_PedidosVIEW);
+        objPedidosDTO.setIDCliente_PedidosDTO(IDCliente_PedidosVIEW);
+        objPedidosDTO.setIDPrato_PedidosDTO(IDPrato_PedidosVIEW);
+        objPedidosDTO.setPagamento_PedidosDTO(Pagamento_PedidosVIEW);
+        objPedidosDTO.setValor_PedidosDTO(Valor_PedidosVIEW);
+        
+        PedidosDAO objPedidosDAO = new PedidosDAO();
+        objPedidosDAO.cadastrarPedido(objPedidosDTO);
+    }
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VIEW;
 
 import DAO.FuncionáriosDAO;
@@ -9,8 +5,9 @@ import DTO.FuncionáriosDTO;
 
 /**
  *
- * @author gabri
+ * @author Gabriel Possato
  */
+
 public class frmFuncionáriosVIEW extends javax.swing.JFrame {
 
     /**
@@ -55,6 +52,7 @@ public class frmFuncionáriosVIEW extends javax.swing.JFrame {
         jtxCargo_Funcionários = new javax.swing.JTextField();
         radioMasculino = new javax.swing.JRadioButton();
         radioFeminino = new javax.swing.JRadioButton();
+        btnVerTabela = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -202,6 +200,15 @@ public class frmFuncionáriosVIEW extends javax.swing.JFrame {
         jtxSexo_Funcionários.add(radioFeminino);
         radioFeminino.setText("F");
 
+        btnVerTabela.setBackground(new java.awt.Color(0, 153, 153));
+        btnVerTabela.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        btnVerTabela.setText("VER TABELA");
+        btnVerTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTabelaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -234,12 +241,6 @@ public class frmFuncionáriosVIEW extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(NOME)
                                     .addComponent(CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnEnviar_Funcionários)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnLimpar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnVoltar))
                                     .addComponent(CADASTRO)
                                     .addComponent(SEXO)
                                     .addComponent(IDADE)
@@ -248,7 +249,15 @@ public class frmFuncionáriosVIEW extends javax.swing.JFrame {
                                     .addComponent(TELEFONE)
                                     .addComponent(CONTRATAÇÃO)
                                     .addComponent(CADASTRO1))
-                                .addGap(0, 116, Short.MAX_VALUE)))
+                                .addGap(0, 231, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnEnviar_Funcionários)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnVerTabela)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLimpar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnVoltar)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -301,7 +310,8 @@ public class frmFuncionáriosVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar_Funcionários)
                     .addComponent(btnLimpar)
-                    .addComponent(btnVoltar))
+                    .addComponent(btnVoltar)
+                    .addComponent(btnVerTabela))
                 .addContainerGap())
         );
 
@@ -333,13 +343,11 @@ public class frmFuncionáriosVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxCargo_FuncionáriosActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-                
         dispose();
         new LoginVIEW().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        
         jtxCPF_Funcionários.setText("");
         jtxCargo_Funcionários.setText("");
         jtxDataContratação_Funcionários.setText("");
@@ -352,47 +360,17 @@ public class frmFuncionáriosVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEnviar_FuncionáriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar_FuncionáriosActionPerformed
-        String CPF_FuncionáriosVIEW, Telefone_FuncionáriosVIEW, Cargo_FuncionáriosVIEW, DataContratação_FuncionáriosVIEW, Email_FuncionáriosVIEW, Endereço_FuncionáriosVIEW,  Nome_FuncionáriosVIEW, Sexo_FuncionáriosVIEW;
-        int Idade_FuncionáriosVIEW, IDFilial_FuncionáriosVIEW; 
-        
-        if (radioMasculino.isSelected()){
-            Sexo_FuncionáriosVIEW = "M";
-        }
-        
-        else {
-            Sexo_FuncionáriosVIEW = "F";
-        }
-        
-        IDFilial_FuncionáriosVIEW = Integer.parseInt(jtxIDFilial_Funcionários.getText());
-        CPF_FuncionáriosVIEW = jtxCPF_Funcionários.getText();
-        DataContratação_FuncionáriosVIEW = jtxDataContratação_Funcionários.getText();
-        Email_FuncionáriosVIEW = jtxEmail_Funcionários.getText();
-        Endereço_FuncionáriosVIEW = jtxEndereço_Funcionários.getText();
-        Nome_FuncionáriosVIEW = jtxNome_Funcionários.getText();
-        Telefone_FuncionáriosVIEW = jtxTelefone_Funcionários.getText();
-        Cargo_FuncionáriosVIEW = jtxCargo_Funcionários.getText();
-        Idade_FuncionáriosVIEW = Integer.parseInt(jtxIdade_Funcionários.getText());
-        
-        FuncionáriosDTO objFuncionáriosDTO = new FuncionáriosDTO();
-        
-        objFuncionáriosDTO.setCPF_FuncionáriosDTO(CPF_FuncionáriosVIEW);
-        objFuncionáriosDTO.setCargo_FuncionáriosDTO(Cargo_FuncionáriosVIEW);
-        objFuncionáriosDTO.setDataContratação_FuncionáriosDTO(DataContratação_FuncionáriosVIEW);
-        objFuncionáriosDTO.setEmail_FuncionáriosDTO(Email_FuncionáriosVIEW);
-        objFuncionáriosDTO.setEndereço_FuncionáriosDTO(Endereço_FuncionáriosVIEW);
-        objFuncionáriosDTO.setIDFilial_FuncionáriosDTO(IDFilial_FuncionáriosVIEW);
-        objFuncionáriosDTO.setIdade_FuncionáriosDTO(Idade_FuncionáriosVIEW);
-        objFuncionáriosDTO.setNome_FuncionáriosDTO(Nome_FuncionáriosVIEW);
-        objFuncionáriosDTO.setSexo_FuncionáriosDTO(Sexo_FuncionáriosVIEW);
-        objFuncionáriosDTO.setTelefone_FuncionáriosDTO(Telefone_FuncionáriosVIEW);
-        
-        FuncionáriosDAO objFuncionáriosDAO = new FuncionáriosDAO();
-        objFuncionáriosDAO.cadastrarFuncionário(objFuncionáriosDTO);
+        cadastrarFuncionários();
     }//GEN-LAST:event_btnEnviar_FuncionáriosActionPerformed
 
     private void radioMasculinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMasculinoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_radioMasculinoActionPerformed
+
+    private void btnVerTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTabelaActionPerformed
+
+        new tableFuncionáriosVIEW().setVisible(true);
+    }//GEN-LAST:event_btnVerTabelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -443,6 +421,7 @@ public class frmFuncionáriosVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel TÍTULO;
     private javax.swing.JButton btnEnviar_Funcionários;
     private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnVerTabela;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JFormattedTextField jtxCPF_Funcionários;
     private javax.swing.JTextField jtxCargo_Funcionários;
@@ -457,4 +436,43 @@ public class frmFuncionáriosVIEW extends javax.swing.JFrame {
     private javax.swing.JRadioButton radioFeminino;
     private javax.swing.JRadioButton radioMasculino;
     // End of variables declaration//GEN-END:variables
+
+    private void cadastrarFuncionários() {
+        String CPF_FuncionáriosVIEW, Telefone_FuncionáriosVIEW, Cargo_FuncionáriosVIEW, DataContratação_FuncionáriosVIEW, Email_FuncionáriosVIEW, Endereço_FuncionáriosVIEW,  Nome_FuncionáriosVIEW, Sexo_FuncionáriosVIEW;
+        int Idade_FuncionáriosVIEW, IDFilial_FuncionáriosVIEW; 
+        
+        if (radioMasculino.isSelected()){
+            Sexo_FuncionáriosVIEW = "M";
+        }
+        
+        else {
+            Sexo_FuncionáriosVIEW = "F";
+        }
+        
+        IDFilial_FuncionáriosVIEW = Integer.parseInt(jtxIDFilial_Funcionários.getText());
+        CPF_FuncionáriosVIEW = jtxCPF_Funcionários.getText();
+        DataContratação_FuncionáriosVIEW = jtxDataContratação_Funcionários.getText();
+        Email_FuncionáriosVIEW = jtxEmail_Funcionários.getText();
+        Endereço_FuncionáriosVIEW = jtxEndereço_Funcionários.getText();
+        Nome_FuncionáriosVIEW = jtxNome_Funcionários.getText();
+        Telefone_FuncionáriosVIEW = jtxTelefone_Funcionários.getText();
+        Cargo_FuncionáriosVIEW = jtxCargo_Funcionários.getText();
+        Idade_FuncionáriosVIEW = Integer.parseInt(jtxIdade_Funcionários.getText());
+        
+        FuncionáriosDTO objFuncionáriosDTO = new FuncionáriosDTO();
+        
+        objFuncionáriosDTO.setCPF_FuncionáriosDTO(CPF_FuncionáriosVIEW);
+        objFuncionáriosDTO.setCargo_FuncionáriosDTO(Cargo_FuncionáriosVIEW);
+        objFuncionáriosDTO.setDataContratação_FuncionáriosDTO(DataContratação_FuncionáriosVIEW);
+        objFuncionáriosDTO.setEmail_FuncionáriosDTO(Email_FuncionáriosVIEW);
+        objFuncionáriosDTO.setEndereço_FuncionáriosDTO(Endereço_FuncionáriosVIEW);
+        objFuncionáriosDTO.setIDFilial_FuncionáriosDTO(IDFilial_FuncionáriosVIEW);
+        objFuncionáriosDTO.setIdade_FuncionáriosDTO(Idade_FuncionáriosVIEW);
+        objFuncionáriosDTO.setNome_FuncionáriosDTO(Nome_FuncionáriosVIEW);
+        objFuncionáriosDTO.setSexo_FuncionáriosDTO(Sexo_FuncionáriosVIEW);
+        objFuncionáriosDTO.setTelefone_FuncionáriosDTO(Telefone_FuncionáriosVIEW);
+        
+        FuncionáriosDAO objFuncionáriosDAO = new FuncionáriosDAO();
+        objFuncionáriosDAO.cadastrarFuncionário(objFuncionáriosDTO);
+    }
 }

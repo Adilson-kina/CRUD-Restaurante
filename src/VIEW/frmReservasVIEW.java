@@ -7,6 +7,7 @@ import DTO.ReservasDTO;
  *
  * @author Gabriel Possato
  */
+
 public class frmReservasVIEW extends javax.swing.JFrame {
 
     /**
@@ -39,6 +40,7 @@ public class frmReservasVIEW extends javax.swing.JFrame {
         jtxIDFilial_Reservas = new javax.swing.JTextField();
         jtxCapacidade_Reservas = new javax.swing.JTextField();
         btnEnviar_Reservas = new javax.swing.JButton();
+        btnVerTabelaBebidas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,6 +132,15 @@ public class frmReservasVIEW extends javax.swing.JFrame {
             }
         });
 
+        btnVerTabelaBebidas.setBackground(new java.awt.Color(0, 153, 153));
+        btnVerTabelaBebidas.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        btnVerTabelaBebidas.setText("VER TABELA");
+        btnVerTabelaBebidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTabelaBebidasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,26 +151,28 @@ public class frmReservasVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnEnviar_Reservas)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnLimpar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnVoltar))
                             .addComponent(DATA)
                             .addComponent(CLIENTE)
                             .addComponent(MESA)
                             .addComponent(FILIAL)
                             .addComponent(CAPACIDADE))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 264, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtxDataReserva_Reservas)
-                            .addComponent(jtxIDCliente_Reservas, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-                            .addComponent(jtxMesa_Reservas, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-                            .addComponent(jtxIDFilial_Reservas, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
-                            .addComponent(jtxCapacidade_Reservas, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE))))
+                            .addComponent(jtxIDCliente_Reservas, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                            .addComponent(jtxMesa_Reservas, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                            .addComponent(jtxIDFilial_Reservas, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                            .addComponent(jtxCapacidade_Reservas, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEnviar_Reservas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVerTabelaBebidas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVoltar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -190,7 +203,8 @@ public class frmReservasVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLimpar)
                     .addComponent(btnVoltar)
-                    .addComponent(btnEnviar_Reservas))
+                    .addComponent(btnEnviar_Reservas)
+                    .addComponent(btnVerTabelaBebidas))
                 .addGap(0, 9, Short.MAX_VALUE))
         );
 
@@ -214,13 +228,11 @@ public class frmReservasVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxCapacidade_ReservasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        
         dispose();
         new LoginVIEW().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        
         jtxCapacidade_Reservas.setText("");
         jtxDataReserva_Reservas.setText("");
         jtxIDCliente_Reservas.setText("");
@@ -229,26 +241,12 @@ public class frmReservasVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEnviar_ReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar_ReservasActionPerformed
-        int Capacidade_ReservasVIEW, IDCliente_ReservasVIEW, IDFilial_ReservasVIEW;
-        String DataReserva_ReservasVIEW, Mesa_ReservasVIEW;
-        
-        Capacidade_ReservasVIEW = Integer.parseInt(jtxCapacidade_Reservas.getText());
-        IDCliente_ReservasVIEW = Integer.parseInt(jtxIDCliente_Reservas.getText());
-        IDFilial_ReservasVIEW = Integer.parseInt(jtxIDFilial_Reservas.getText());
-        DataReserva_ReservasVIEW = jtxDataReserva_Reservas.getText();
-        Mesa_ReservasVIEW = jtxMesa_Reservas.getText();
-        
-        ReservasDTO objReservasDTO = new ReservasDTO();
-        
-        objReservasDTO.setCapacidade_Reservas(Capacidade_ReservasVIEW);
-        objReservasDTO.setDataReserva_Reservas(DataReserva_ReservasVIEW);
-        objReservasDTO.setIDCliente_Reservas(IDCliente_ReservasVIEW);
-        objReservasDTO.setIDFilial_Reservas(IDFilial_ReservasVIEW);
-        objReservasDTO.setMesa_Reservas(Mesa_ReservasVIEW);
-        
-        ReservasDAO objReservasDAO = new ReservasDAO();
-        objReservasDAO.cadastrarReserva(objReservasDTO);
+        cadastrarReservas();
     }//GEN-LAST:event_btnEnviar_ReservasActionPerformed
+
+    private void btnVerTabelaBebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTabelaBebidasActionPerformed
+        new tableReservasVIEW().setVisible(true);
+    }//GEN-LAST:event_btnVerTabelaBebidasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,6 +292,7 @@ public class frmReservasVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel TÍTULO;
     private javax.swing.JButton btnEnviar_Reservas;
     private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnVerTabelaBebidas;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JTextField jtxCapacidade_Reservas;
     private javax.swing.JFormattedTextField jtxDataReserva_Reservas;
@@ -301,4 +300,26 @@ public class frmReservasVIEW extends javax.swing.JFrame {
     private javax.swing.JTextField jtxIDFilial_Reservas;
     private javax.swing.JTextField jtxMesa_Reservas;
     // End of variables declaration//GEN-END:variables
+    
+    private void cadastrarReservas() {
+        int Capacidade_ReservasVIEW, IDCliente_ReservasVIEW, IDFilial_ReservasVIEW;
+        String DataReserva_ReservasVIEW, Mesa_ReservasVIEW;
+        
+        Capacidade_ReservasVIEW = Integer.parseInt(jtxCapacidade_Reservas.getText());
+        IDCliente_ReservasVIEW = Integer.parseInt(jtxIDCliente_Reservas.getText());
+        IDFilial_ReservasVIEW = Integer.parseInt(jtxIDFilial_Reservas.getText());
+        DataReserva_ReservasVIEW = jtxDataReserva_Reservas.getText();
+        Mesa_ReservasVIEW = jtxMesa_Reservas.getText();
+        
+        ReservasDTO objReservasDTO = new ReservasDTO();
+        
+        objReservasDTO.setCapacidade_Reservas(Capacidade_ReservasVIEW);
+        objReservasDTO.setDataReserva_Reservas(DataReserva_ReservasVIEW);
+        objReservasDTO.setIDCliente_Reservas(IDCliente_ReservasVIEW);
+        objReservasDTO.setIDFilial_Reservas(IDFilial_ReservasVIEW);
+        objReservasDTO.setMesa_Reservas(Mesa_ReservasVIEW);
+        
+        ReservasDAO objReservasDAO = new ReservasDAO();
+        objReservasDAO.cadastrarReserva(objReservasDTO);
+    }
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VIEW;
 
 import DAO.EntregasDAO;
@@ -11,6 +7,7 @@ import DTO.EntregasDTO;
  *
  * @author Gabriel Possato
  */
+
 public class frmEntregasVIEW extends javax.swing.JFrame {
 
     /**
@@ -39,6 +36,7 @@ public class frmEntregasVIEW extends javax.swing.JFrame {
         TÍTULO = new javax.swing.JLabel();
         ENDEREÇO = new javax.swing.JLabel();
         jtxDataEntrega_Entregas = new javax.swing.JFormattedTextField();
+        btnVerTabela = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,6 +110,15 @@ public class frmEntregasVIEW extends javax.swing.JFrame {
             }
         });
 
+        btnVerTabela.setBackground(new java.awt.Color(0, 153, 153));
+        btnVerTabela.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        btnVerTabela.setText("VER TABELA");
+        btnVerTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTabelaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -123,22 +130,24 @@ public class frmEntregasVIEW extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnEnviar_Entregas)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnLimpar)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnVoltar))
+                                    .addComponent(jtxEndereço_Entregas, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+                                    .addComponent(jtxIDPedido_Entregas, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ENDEREÇO)
                                     .addComponent(PEDIDO)
                                     .addComponent(DATA_ENTREGA))
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtxEndereço_Entregas, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
-                                    .addComponent(jtxIDPedido_Entregas, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)))))
+                                .addComponent(btnEnviar_Entregas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnVerTabela)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLimpar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnVoltar))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jtxDataEntrega_Entregas)))
@@ -164,7 +173,8 @@ public class frmEntregasVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar_Entregas)
                     .addComponent(btnLimpar)
-                    .addComponent(btnVoltar))
+                    .addComponent(btnVoltar)
+                    .addComponent(btnVerTabela))
                 .addGap(0, 12, Short.MAX_VALUE))
         );
 
@@ -184,34 +194,23 @@ public class frmEntregasVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxDataEntrega_EntregasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-                
         dispose();
         new LoginVIEW().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        
         jtxDataEntrega_Entregas.setText("");
         jtxEndereço_Entregas.setText("");
         jtxIDPedido_Entregas.setText("");
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEnviar_EntregasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar_EntregasActionPerformed
-        String DataEntrega_EntregasVIEW, Endereço_EntregasVIEW;
-        int IDPedido_EntregasVIEW;
-        
-        DataEntrega_EntregasVIEW = jtxDataEntrega_Entregas.getText();
-        Endereço_EntregasVIEW = jtxEndereço_Entregas.getText();
-        IDPedido_EntregasVIEW = Integer.parseInt(jtxIDPedido_Entregas.getText());
-        
-        EntregasDTO objEntregasDTO = new EntregasDTO();
-        objEntregasDTO.setDataEntrega_EntregasDTO(DataEntrega_EntregasVIEW);
-        objEntregasDTO.setEndereço_EntregasDTO(Endereço_EntregasVIEW);
-        objEntregasDTO.setIDPedido_EntregasDTO(IDPedido_EntregasVIEW); 
-        
-        EntregasDAO objEntregasDAO = new EntregasDAO();
-        objEntregasDAO.cadastrarEntregas(objEntregasDTO);
+        cadastrarEntregas();
     }//GEN-LAST:event_btnEnviar_EntregasActionPerformed
+
+    private void btnVerTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTabelaActionPerformed
+        new tableEntregasVIEW().setVisible(true);
+    }//GEN-LAST:event_btnVerTabelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,9 +254,27 @@ public class frmEntregasVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel TÍTULO;
     private javax.swing.JButton btnEnviar_Entregas;
     private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnVerTabela;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JFormattedTextField jtxDataEntrega_Entregas;
     private javax.swing.JTextField jtxEndereço_Entregas;
     private javax.swing.JTextField jtxIDPedido_Entregas;
     // End of variables declaration//GEN-END:variables
+    
+    private void cadastrarEntregas() {
+        String DataEntrega_EntregasVIEW, Endereço_EntregasVIEW;
+        int IDPedido_EntregasVIEW;
+        
+        DataEntrega_EntregasVIEW = jtxDataEntrega_Entregas.getText();
+        Endereço_EntregasVIEW = jtxEndereço_Entregas.getText();
+        IDPedido_EntregasVIEW = Integer.parseInt(jtxIDPedido_Entregas.getText());
+        
+        EntregasDTO objEntregasDTO = new EntregasDTO();
+        objEntregasDTO.setDataEntrega_EntregasDTO(DataEntrega_EntregasVIEW);
+        objEntregasDTO.setEndereço_EntregasDTO(Endereço_EntregasVIEW);
+        objEntregasDTO.setIDPedido_EntregasDTO(IDPedido_EntregasVIEW); 
+        
+        EntregasDAO objEntregasDAO = new EntregasDAO();
+        objEntregasDAO.cadastrarEntregas(objEntregasDTO);
+    }
 }

@@ -9,6 +9,7 @@ import DTO.PratosDTO;
  *
  * @author Gabriel Possato
  */
+
 public class frmPratosBebidasVIEW extends javax.swing.JFrame {
 
     /**
@@ -46,6 +47,8 @@ public class frmPratosBebidasVIEW extends javax.swing.JFrame {
         VALOR_BEBIDA = new javax.swing.JLabel();
         btnEnviar_Bebidas = new javax.swing.JButton();
         btnLimpar_Bebidas = new javax.swing.JButton();
+        btnVerTabelaPratos = new javax.swing.JButton();
+        btnVerTabelaBebidas = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -180,6 +183,24 @@ public class frmPratosBebidasVIEW extends javax.swing.JFrame {
             }
         });
 
+        btnVerTabelaPratos.setBackground(new java.awt.Color(0, 153, 153));
+        btnVerTabelaPratos.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        btnVerTabelaPratos.setText("VER TABELA");
+        btnVerTabelaPratos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTabelaPratosActionPerformed(evt);
+            }
+        });
+
+        btnVerTabelaBebidas.setBackground(new java.awt.Color(0, 153, 153));
+        btnVerTabelaBebidas.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        btnVerTabelaBebidas.setText("VER TABELA");
+        btnVerTabelaBebidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTabelaBebidasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -193,19 +214,21 @@ public class frmPratosBebidasVIEW extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnEnviar_Pratos)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnLimpar_Pratos))
                                     .addComponent(PRATO)
                                     .addComponent(DESCRIÇÃO_PRATO)
                                     .addComponent(VALOR_PRATO))
-                                .addGap(0, 211, Short.MAX_VALUE))
+                                .addGap(0, 242, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtxNome_Pratos, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                                    .addComponent(jtxDescrição_Pratos, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)))))
+                                    .addComponent(jtxNome_Pratos, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                                    .addComponent(jtxDescrição_Pratos, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnEnviar_Pratos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnVerTabelaPratos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLimpar_Pratos))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jtxValor_Pratos))
@@ -216,20 +239,22 @@ public class frmPratosBebidasVIEW extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(BEBIDA)
                                     .addComponent(DESCRIÇÃO_BEBIDA)
-                                    .addComponent(VALOR_BEBIDA)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnEnviar_Bebidas)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnLimpar_Bebidas)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnVoltar)))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(VALOR_BEBIDA))
+                                .addGap(0, 231, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jtxNome_Bebidas, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                                    .addComponent(jtxDescrição_Bebidas, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
-                                    .addComponent(jtxValor_Bebidas))))))
+                                    .addComponent(jtxNome_Bebidas, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                                    .addComponent(jtxDescrição_Bebidas, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                                    .addComponent(jtxValor_Bebidas)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnEnviar_Bebidas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnVerTabelaBebidas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLimpar_Bebidas)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnVoltar)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -251,7 +276,8 @@ public class frmPratosBebidasVIEW extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar_Pratos)
-                    .addComponent(btnLimpar_Pratos))
+                    .addComponent(btnLimpar_Pratos)
+                    .addComponent(btnVerTabelaPratos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TÍTULO1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -270,7 +296,8 @@ public class frmPratosBebidasVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar_Bebidas)
                     .addComponent(btnLimpar_Bebidas)
-                    .addComponent(btnVoltar))
+                    .addComponent(btnVoltar)
+                    .addComponent(btnVerTabelaBebidas))
                 .addGap(0, 6, Short.MAX_VALUE))
         );
 
@@ -302,58 +329,37 @@ public class frmPratosBebidasVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxDescrição_BebidasActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-                
         dispose();
         new LoginVIEW().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnLimpar_PratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar_PratosActionPerformed
-
         jtxDescrição_Pratos.setText("");
         jtxNome_Pratos.setText("");
         jtxValor_Pratos.setText("");
     }//GEN-LAST:event_btnLimpar_PratosActionPerformed
 
     private void btnLimpar_BebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpar_BebidasActionPerformed
-        
         jtxDescrição_Bebidas.setText("");
         jtxNome_Bebidas.setText("");
         jtxValor_Bebidas.setText("");
     }//GEN-LAST:event_btnLimpar_BebidasActionPerformed
 
     private void btnEnviar_PratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar_PratosActionPerformed
-        String Nome_PratosVIEW, Descrição_PratosVIEW, Valor_PratosVIEW;
-        
-        Nome_PratosVIEW = jtxNome_Pratos.getText();
-        Descrição_PratosVIEW = jtxDescrição_Pratos.getText();
-        Valor_PratosVIEW = jtxValor_Pratos.getText();
-        
-        PratosDTO objPratosDTO = new PratosDTO();
-        
-        objPratosDTO.setDescrição_PratosDTO(Descrição_PratosVIEW);
-        objPratosDTO.setNome_PratosDTO(Nome_PratosVIEW);
-        objPratosDTO.setValor_PratosDTO(Valor_PratosVIEW);
-        
-        PratosDAO objPratosDAO = new PratosDAO();
-        objPratosDAO.cadastrarPrato(objPratosDTO);
+        cadastrarPratos();
     }//GEN-LAST:event_btnEnviar_PratosActionPerformed
 
     private void btnEnviar_BebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar_BebidasActionPerformed
-        String Nome_BebidasVIEW, Descrição_BebidasVIEW, Valor_BebidasVIEW;
-        
-        Nome_BebidasVIEW = jtxNome_Bebidas.getText();
-        Descrição_BebidasVIEW = jtxDescrição_Bebidas.getText();
-        Valor_BebidasVIEW = jtxValor_Bebidas.getText();
-        
-        BebidasDTO objBebidasDTO = new BebidasDTO();
-        
-        objBebidasDTO.setDescrição_BebidasDTO(Descrição_BebidasVIEW);
-        objBebidasDTO.setNome_BebidasDTO(Nome_BebidasVIEW);
-        objBebidasDTO.setValor_BebidasDTO(Valor_BebidasVIEW);
-        
-        BebidasDAO objBebidasDAO = new BebidasDAO();
-        objBebidasDAO.cadastrarBebida(objBebidasDTO);
+        cadastrarBebidas();
     }//GEN-LAST:event_btnEnviar_BebidasActionPerformed
+
+    private void btnVerTabelaPratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTabelaPratosActionPerformed
+        new tablePratosVIEW().setVisible(true);
+    }//GEN-LAST:event_btnVerTabelaPratosActionPerformed
+
+    private void btnVerTabelaBebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTabelaBebidasActionPerformed
+        new tableBebidasVIEW().setVisible(true);
+    }//GEN-LAST:event_btnVerTabelaBebidasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -403,6 +409,10 @@ public class frmPratosBebidasVIEW extends javax.swing.JFrame {
     private javax.swing.JButton btnEnviar_Pratos;
     private javax.swing.JButton btnLimpar_Bebidas;
     private javax.swing.JButton btnLimpar_Pratos;
+    private javax.swing.JButton btnVerTabela;
+    private javax.swing.JButton btnVerTabela1;
+    private javax.swing.JButton btnVerTabelaBebidas;
+    private javax.swing.JButton btnVerTabelaPratos;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JTextField jtxDescrição_Bebidas;
     private javax.swing.JTextField jtxDescrição_Pratos;
@@ -411,4 +421,38 @@ public class frmPratosBebidasVIEW extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jtxValor_Bebidas;
     private javax.swing.JFormattedTextField jtxValor_Pratos;
     // End of variables declaration//GEN-END:variables
+    
+    private void cadastrarPratos() {
+        String Nome_PratosVIEW, Descrição_PratosVIEW, Valor_PratosVIEW;
+        
+        Nome_PratosVIEW = jtxNome_Pratos.getText();
+        Descrição_PratosVIEW = jtxDescrição_Pratos.getText();
+        Valor_PratosVIEW = jtxValor_Pratos.getText();
+        
+        PratosDTO objPratosDTO = new PratosDTO();
+        
+        objPratosDTO.setDescrição_PratosDTO(Descrição_PratosVIEW);
+        objPratosDTO.setNome_PratosDTO(Nome_PratosVIEW);
+        objPratosDTO.setValor_PratosDTO(Valor_PratosVIEW);
+        
+        PratosDAO objPratosDAO = new PratosDAO();
+        objPratosDAO.cadastrarPrato(objPratosDTO);
+    }
+    
+    private void cadastrarBebidas() {
+        String Nome_BebidasVIEW, Descrição_BebidasVIEW, Valor_BebidasVIEW;
+        
+        Nome_BebidasVIEW = jtxNome_Bebidas.getText();
+        Descrição_BebidasVIEW = jtxDescrição_Bebidas.getText();
+        Valor_BebidasVIEW = jtxValor_Bebidas.getText();
+        
+        BebidasDTO objBebidasDTO = new BebidasDTO();
+        
+        objBebidasDTO.setDescrição_BebidasDTO(Descrição_BebidasVIEW);
+        objBebidasDTO.setNome_BebidasDTO(Nome_BebidasVIEW);
+        objBebidasDTO.setValor_BebidasDTO(Valor_BebidasVIEW);
+        
+        BebidasDAO objBebidasDAO = new BebidasDAO();
+        objBebidasDAO.cadastrarBebida(objBebidasDTO);
+    }
 }

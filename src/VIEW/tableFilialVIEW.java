@@ -1,21 +1,22 @@
 package VIEW;
 
-import DAO.ClienteDAO;
-import DTO.ClienteDTO;
+import DAO.FilialDAO;
+import DTO.FilialDTO;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Gabriel Possato
  */
 
-public class tableClienteVIEW extends javax.swing.JFrame {
+public class tableFilialVIEW extends javax.swing.JFrame {
 
     /**
-     * Creates new form tableClienteVIEW
+     * Creates new form tableFilialVIEW
      */
-    public tableClienteVIEW() {
+    public tableFilialVIEW() {
         initComponents();
     }
 
@@ -30,7 +31,7 @@ public class tableClienteVIEW extends javax.swing.JFrame {
 
         TÍTULO = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaClientes = new javax.swing.JTable();
+        tabelaFiliais = new javax.swing.JTable();
         btnListar = new javax.swing.JButton();
         btnPesquisar = new javax.swing.JButton();
         jtxPesquisar = new javax.swing.JTextField();
@@ -42,21 +43,21 @@ public class tableClienteVIEW extends javax.swing.JFrame {
         TÍTULO.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 18)); // NOI18N
         TÍTULO.setForeground(new java.awt.Color(255, 255, 255));
         TÍTULO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        TÍTULO.setText("Clientes");
+        TÍTULO.setText("Filiais");
         TÍTULO.setOpaque(true);
 
-        tabelaClientes.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaFiliais.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "CPF", "Nome", "Sexo", "Idade", "Endereço", "Email", "Telefone", "Data de Cadastro"
+                "Endereço", "Email", "Telefone", "Quantidade_Mesas", "Avaliação"
             }
         ));
-        jScrollPane1.setViewportView(tabelaClientes);
+        jScrollPane1.setViewportView(tabelaFiliais);
 
         btnListar.setBackground(new java.awt.Color(0, 153, 153));
         btnListar.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
@@ -76,7 +77,7 @@ public class tableClienteVIEW extends javax.swing.JFrame {
             }
         });
 
-        ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CPF", "Nome", "Sexo", "Idade", "Endereco", "Email", "Telefone", "Data_cadastro" }));
+        ComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Endereco", "Email", "Telefone", "Quant_mesas", "Avaliacao" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -94,7 +95,7 @@ public class tableClienteVIEW extends javax.swing.JFrame {
                         .addComponent(ComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtxPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(213, 213, 213)
+                        .addGap(201, 201, 201)
                         .addComponent(btnPesquisar)))
                 .addContainerGap())
         );
@@ -117,7 +118,7 @@ public class tableClienteVIEW extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        listarValoresCliente();
+        listarValoresFilial();
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
@@ -126,7 +127,7 @@ public class tableClienteVIEW extends javax.swing.JFrame {
         Tipo = ComboBox.getSelectedItem().toString();
         Valor = jtxPesquisar.getText();
         
-        pesquisarValoresCliente(Valor, Tipo);
+        pesquisarValoresFilial(Valor, Tipo);
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     /**
@@ -146,20 +147,20 @@ public class tableClienteVIEW extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(tableClienteVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tableFilialVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(tableClienteVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tableFilialVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(tableClienteVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tableFilialVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(tableClienteVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(tableFilialVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new tableClienteVIEW().setVisible(true);
+                new tableFilialVIEW().setVisible(true);
             }
         });
     }
@@ -171,62 +172,57 @@ public class tableClienteVIEW extends javax.swing.JFrame {
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jtxPesquisar;
-    private javax.swing.JTable tabelaClientes;
+    private javax.swing.JTable tabelaFiliais;
     // End of variables declaration//GEN-END:variables
     
-    private void listarValoresCliente(){
+    private void listarValoresFilial(){
         try {
-            ClienteDAO objClienteDAO = new ClienteDAO();
+            FilialDAO objFilialDAO = new FilialDAO();
             
-            DefaultTableModel model = (DefaultTableModel) tabelaClientes.getModel();
+            DefaultTableModel model = (DefaultTableModel) tabelaFiliais.getModel();
             model.setNumRows(0);
             
-            ArrayList<ClienteDTO> lista = objClienteDAO.listarCliente();
+            ArrayList<FilialDTO> lista = objFilialDAO.listarFilial();
             
             for (int num = 0; num < lista.size(); num ++) {
                 model.addRow(new Object [] {
-                    lista.get(num).getCPF_ClienteDTO(),
-                    lista.get(num).getNome_ClienteDTO(),
-                    lista.get(num).getSexo_ClienteDTO(),
-                    lista.get(num).getIdade_ClienteDTO(),
-                    lista.get(num).getEndereço_ClienteDTO(),
-                    lista.get(num).getEmail_ClienteDTO(),
-                    lista.get(num).getTelefone_ClienteDTO(),
-                    lista.get(num).getDataCadastro_ClienteDTO()
+                    lista.get(num).getEndereço_FiliaisDTO(),
+                    lista.get(num).getEmail_FiliaisDTO(),
+                    lista.get(num).getTelefone_FiliaisDTO(),
+                    lista.get(num).getQtndMesas_FiliaisDTO(),
+                    lista.get(num).getAvaliação_FiliaisDTO()
                 });         
             }
         }
         
         catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "Erro no arquivo 'tableClienteVIEW - listarValoresCliente': " + erro);
+            JOptionPane.showMessageDialog(null, "Erro no arquivo 'tableFilialVIEW': " + erro);
         }
     }
     
-    private void pesquisarValoresCliente(String valor, String item){
+    private void pesquisarValoresFilial(String valor, String item){
         try {
-            ClienteDAO objClienteDAO = new ClienteDAO();
+            FilialDAO objFilialDAO = new FilialDAO();
             
-            DefaultTableModel model = (DefaultTableModel) tabelaClientes.getModel();
+            DefaultTableModel model = (DefaultTableModel) tabelaFiliais.getModel();
             model.setNumRows(0);
             
-            ArrayList<ClienteDTO> lista = objClienteDAO.pesquisarCliente(valor, item);
+            ArrayList<FilialDTO> lista = objFilialDAO.pesquisarFilial(valor, item);
             
             for (int num = 0; num < lista.size(); num ++) {
                 model.addRow(new Object [] {
-                    lista.get(num).getCPF_ClienteDTO(),
-                    lista.get(num).getNome_ClienteDTO(),
-                    lista.get(num).getSexo_ClienteDTO(),
-                    lista.get(num).getIdade_ClienteDTO(),
-                    lista.get(num).getEndereço_ClienteDTO(),
-                    lista.get(num).getEmail_ClienteDTO(),
-                    lista.get(num).getTelefone_ClienteDTO(),
-                    lista.get(num).getDataCadastro_ClienteDTO()
+                    lista.get(num).getEndereço_FiliaisDTO(),
+                    lista.get(num).getEmail_FiliaisDTO(),
+                    lista.get(num).getTelefone_FiliaisDTO(),
+                    lista.get(num).getQtndMesas_FiliaisDTO(),
+                    lista.get(num).getAvaliação_FiliaisDTO()
                 });         
             }
         }
         
         catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "Erro no arquivo 'tableClienteVIEW - pesquisarValoresCliente': " + erro);
+            JOptionPane.showMessageDialog(null, "Erro no arquivo 'tableFilialVIEW - pesquisarValoresFilial': " + erro);
         }
     }
 }
+

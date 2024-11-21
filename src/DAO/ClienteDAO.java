@@ -1,8 +1,8 @@
 package DAO;
 
 import java.sql.*;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import DTO.ClienteDTO;
 import javax.swing.JOptionPane;
 
@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
  *
  * @author Gabriel Possato
  */
+
 public class ClienteDAO {
     
     Connection conn;
@@ -42,7 +43,7 @@ public class ClienteDAO {
         }
     }
     
-    public ArrayList<ClienteDTO> pesquisarCliente() {
+    public ArrayList<ClienteDTO> listarCliente() {
         String sql = "SELECT * FROM Clientes";
         
         conn = new ConexãoDAO().connectorDB();
@@ -68,13 +69,15 @@ public class ClienteDAO {
         } 
         
         catch (SQLException erro) {
-            JOptionPane.showMessageDialog(null, "Erro no arquivo 'ClienteDAO' - 'pesquisarCliente': " + erro);
+            JOptionPane.showMessageDialog(null, "Erro no arquivo 'ClienteDAO' - 'listarCliente': " + erro);
         }
         
         return lista;
     }
-    public ArrayList<ClienteDTO> pesquisaEspecifica(String valor, String item){
+    
+    public ArrayList<ClienteDTO> pesquisarCliente(String valor, String item){
         String sql = "SELECT * FROM Clientes where " + item + " like '%" + valor + "%'";
+        
         conn = new ConexãoDAO().connectorDB();
         try {
             pstm = conn.prepareStatement(sql);
@@ -102,5 +105,4 @@ public class ClienteDAO {
         
         return lista;
     }
-    
 }

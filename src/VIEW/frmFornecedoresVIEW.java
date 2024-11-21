@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VIEW;
 
 import DAO.FornecedoresDAO;
@@ -9,8 +5,9 @@ import DTO.FornecedoresDTO;
 
 /**
  *
- * @author gabri
+ * @author Gabriel Possato
  */
+
 public class frmFornecedoresVIEW extends javax.swing.JFrame {
 
     /**
@@ -45,6 +42,7 @@ public class frmFornecedoresVIEW extends javax.swing.JFrame {
         CNPJ = new javax.swing.JLabel();
         jtxMaterial_Fornecedores = new javax.swing.JTextField();
         jtxValor_Fornecedores = new javax.swing.JFormattedTextField();
+        btnVerTabela = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -145,6 +143,15 @@ public class frmFornecedoresVIEW extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        btnVerTabela.setBackground(new java.awt.Color(0, 153, 153));
+        btnVerTabela.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        btnVerTabela.setText("VER TABELA");
+        btnVerTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTabelaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,19 +171,21 @@ public class frmFornecedoresVIEW extends javax.swing.JFrame {
                     .addComponent(jtxValor_Fornecedores)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnEnviar_Fornecedores)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnLimpar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnVoltar))
                             .addComponent(NOME)
                             .addComponent(CNPJ)
                             .addComponent(MATERIAL)
                             .addComponent(EMAIL)
                             .addComponent(TELEFONE)
                             .addComponent(VALOR))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 247, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEnviar_Fornecedores)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVerTabela)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVoltar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -211,7 +220,8 @@ public class frmFornecedoresVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar_Fornecedores)
                     .addComponent(btnLimpar)
-                    .addComponent(btnVoltar))
+                    .addComponent(btnVoltar)
+                    .addComponent(btnVerTabela))
                 .addGap(0, 10, Short.MAX_VALUE))
         );
 
@@ -231,13 +241,11 @@ public class frmFornecedoresVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxMaterial_FornecedoresActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-                
         dispose();
         new LoginVIEW().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        
         jtxCNPJ_Fornecedores.setText("");
         jtxEmail_Fornecedores.setText("");
         jtxMaterial_Fornecedores.setText("");
@@ -247,26 +255,13 @@ public class frmFornecedoresVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEnviar_FornecedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar_FornecedoresActionPerformed
-        String CNPJ_FornecedoresVIEW, Email_FornecedoresVIEW, Material_FornecedoresVIEW, Nome_FornecedoresVIEW, Telefone_FornecedoresVIEW, Valor_FornecedoresVIEW; 
-        
-        CNPJ_FornecedoresVIEW = jtxCNPJ_Fornecedores.getText();
-        Email_FornecedoresVIEW = jtxEmail_Fornecedores.getText();
-        Material_FornecedoresVIEW = jtxMaterial_Fornecedores.getText();
-        Nome_FornecedoresVIEW = jtxNome_Fornecedores.getText();
-        Telefone_FornecedoresVIEW = jtxTelefone_Fornecedores.getText();
-        Valor_FornecedoresVIEW = jtxValor_Fornecedores.getText();
-        
-        FornecedoresDTO objFornecedorDTO = new FornecedoresDTO();
-        objFornecedorDTO.setCNPJ_FornecedoresDTO(CNPJ_FornecedoresVIEW);
-        objFornecedorDTO.setEmail_FornecedoresDTO(Email_FornecedoresVIEW);
-        objFornecedorDTO.setMaterial_FornecedoresDTO(Material_FornecedoresVIEW);
-        objFornecedorDTO.setNome_FornecedoresDTO(Nome_FornecedoresVIEW);
-        objFornecedorDTO.setTelefone_FornecedoresDTO(Telefone_FornecedoresVIEW);
-        objFornecedorDTO.setValor_FornecedoresDTO(Valor_FornecedoresVIEW);
-        
-        FornecedoresDAO objFornecedoresDAO = new FornecedoresDAO();
-        objFornecedoresDAO.cadastrarFornecedor(objFornecedorDTO);
+        cadastrarFornecedores();
     }//GEN-LAST:event_btnEnviar_FornecedoresActionPerformed
+
+    private void btnVerTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTabelaActionPerformed
+
+        new tableFornecedoresVIEW().setVisible(true);
+    }//GEN-LAST:event_btnVerTabelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,6 +308,7 @@ public class frmFornecedoresVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel VALOR;
     private javax.swing.JButton btnEnviar_Fornecedores;
     private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnVerTabela;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JFormattedTextField jtxCNPJ_Fornecedores;
     private javax.swing.JTextField jtxEmail_Fornecedores;
@@ -321,4 +317,26 @@ public class frmFornecedoresVIEW extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField jtxTelefone_Fornecedores;
     private javax.swing.JFormattedTextField jtxValor_Fornecedores;
     // End of variables declaration//GEN-END:variables
+
+    private void cadastrarFornecedores() {
+        String CNPJ_FornecedoresVIEW, Email_FornecedoresVIEW, Material_FornecedoresVIEW, Nome_FornecedoresVIEW, Telefone_FornecedoresVIEW, Valor_FornecedoresVIEW; 
+        
+        CNPJ_FornecedoresVIEW = jtxCNPJ_Fornecedores.getText();
+        Email_FornecedoresVIEW = jtxEmail_Fornecedores.getText();
+        Material_FornecedoresVIEW = jtxMaterial_Fornecedores.getText();
+        Nome_FornecedoresVIEW = jtxNome_Fornecedores.getText();
+        Telefone_FornecedoresVIEW = jtxTelefone_Fornecedores.getText();
+        Valor_FornecedoresVIEW = jtxValor_Fornecedores.getText();
+        
+        FornecedoresDTO objFornecedorDTO = new FornecedoresDTO();
+        objFornecedorDTO.setCNPJ_FornecedoresDTO(CNPJ_FornecedoresVIEW);
+        objFornecedorDTO.setEmail_FornecedoresDTO(Email_FornecedoresVIEW);
+        objFornecedorDTO.setMaterial_FornecedoresDTO(Material_FornecedoresVIEW);
+        objFornecedorDTO.setNome_FornecedoresDTO(Nome_FornecedoresVIEW);
+        objFornecedorDTO.setTelefone_FornecedoresDTO(Telefone_FornecedoresVIEW);
+        objFornecedorDTO.setValor_FornecedoresDTO(Valor_FornecedoresVIEW);
+        
+        FornecedoresDAO objFornecedoresDAO = new FornecedoresDAO();
+        objFornecedoresDAO.cadastrarFornecedor(objFornecedorDTO);
+    }
 }

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package VIEW;
 
 import DAO.IngredientesDAO;
@@ -9,8 +5,9 @@ import DTO.IngredientesDTO;
 
 /**
  *
- * @author gabri
+ * @author Gabriel Possato
  */
+
 public class frmIngredientesVIEW extends javax.swing.JFrame {
 
     /**
@@ -41,6 +38,7 @@ public class frmIngredientesVIEW extends javax.swing.JFrame {
         MEDIDA = new javax.swing.JLabel();
         jtxUnidadeMedida_Ingredientes = new javax.swing.JTextField();
         jtxIDPrato_Ingredientes = new javax.swing.JTextField();
+        btnVerTabela = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,6 +120,15 @@ public class frmIngredientesVIEW extends javax.swing.JFrame {
             }
         });
 
+        btnVerTabela.setBackground(new java.awt.Color(0, 153, 153));
+        btnVerTabela.setFont(new java.awt.Font("Yu Gothic UI Semilight", 0, 14)); // NOI18N
+        btnVerTabela.setText("VER TABELA");
+        btnVerTabela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerTabelaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,24 +139,26 @@ public class frmIngredientesVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnEnviar_Ingredientes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnLimpar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnVoltar))
                             .addComponent(NOME)
                             .addComponent(MEDIDA)
                             .addComponent(PRATO)
                             .addComponent(BEBIDA))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 247, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtxNome_Ingredientes, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
-                            .addComponent(jtxUnidadeMedida_Ingredientes, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
-                            .addComponent(jtxIDPrato_Ingredientes, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
-                            .addComponent(jtxIDBebida_Ingredientes, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))))
+                            .addComponent(jtxNome_Ingredientes, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                            .addComponent(jtxUnidadeMedida_Ingredientes, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                            .addComponent(jtxIDPrato_Ingredientes, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+                            .addComponent(jtxIDBebida_Ingredientes, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnEnviar_Ingredientes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVerTabela)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLimpar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnVoltar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -176,8 +185,9 @@ public class frmIngredientesVIEW extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEnviar_Ingredientes)
                     .addComponent(btnLimpar)
-                    .addComponent(btnVoltar))
-                .addGap(0, 9, Short.MAX_VALUE))
+                    .addComponent(btnVoltar)
+                    .addComponent(btnVerTabela))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         pack();
@@ -200,7 +210,6 @@ public class frmIngredientesVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_jtxIDPrato_IngredientesActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-                
         dispose();
         new LoginVIEW().setVisible(true);
     }//GEN-LAST:event_btnVoltarActionPerformed
@@ -213,24 +222,13 @@ public class frmIngredientesVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEnviar_IngredientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviar_IngredientesActionPerformed
-        String Nome_IngredientesVIEW, UnidadeMedida_IngredientesVIEW;
-        int IDPrato_IngredientesVIEW, IDBebida_IngredientesVIEW;
-        
-        Nome_IngredientesVIEW = jtxNome_Ingredientes.getText();
-        UnidadeMedida_IngredientesVIEW = jtxUnidadeMedida_Ingredientes.getText();
-        IDPrato_IngredientesVIEW = Integer.parseInt(jtxIDPrato_Ingredientes.getText());
-        IDBebida_IngredientesVIEW = Integer.parseInt(jtxIDBebida_Ingredientes.getText());
-        
-        IngredientesDTO objIngredientesDTO = new IngredientesDTO();
-        
-        objIngredientesDTO.setIDBebida_IngredientesDTO(IDBebida_IngredientesVIEW);
-        objIngredientesDTO.setIDPrato_IngredientesDTO(IDPrato_IngredientesVIEW);
-        objIngredientesDTO.setNome_IngredientesDTO(Nome_IngredientesVIEW);
-        objIngredientesDTO.setUnidadeMedida_IngredientesDTO(UnidadeMedida_IngredientesVIEW);
-        
-        IngredientesDAO objIngredientesDAO = new IngredientesDAO();
-        objIngredientesDAO.cadastrarIngrediente(objIngredientesDTO);
+        cadastrarIngredientes();
     }//GEN-LAST:event_btnEnviar_IngredientesActionPerformed
+
+    private void btnVerTabelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerTabelaActionPerformed
+
+        new tableIngredientesVIEW().setVisible(true);
+    }//GEN-LAST:event_btnVerTabelaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,10 +273,31 @@ public class frmIngredientesVIEW extends javax.swing.JFrame {
     private javax.swing.JLabel TÍTULO;
     private javax.swing.JButton btnEnviar_Ingredientes;
     private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnVerTabela;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JTextField jtxIDBebida_Ingredientes;
     private javax.swing.JTextField jtxIDPrato_Ingredientes;
     private javax.swing.JTextField jtxNome_Ingredientes;
     private javax.swing.JTextField jtxUnidadeMedida_Ingredientes;
     // End of variables declaration//GEN-END:variables
+
+    private void cadastrarIngredientes() {
+        String Nome_IngredientesVIEW, UnidadeMedida_IngredientesVIEW;
+        int IDPrato_IngredientesVIEW, IDBebida_IngredientesVIEW;
+        
+        Nome_IngredientesVIEW = jtxNome_Ingredientes.getText();
+        UnidadeMedida_IngredientesVIEW = jtxUnidadeMedida_Ingredientes.getText();
+        IDPrato_IngredientesVIEW = Integer.parseInt(jtxIDPrato_Ingredientes.getText());
+        IDBebida_IngredientesVIEW = Integer.parseInt(jtxIDBebida_Ingredientes.getText());
+        
+        IngredientesDTO objIngredientesDTO = new IngredientesDTO();
+        
+        objIngredientesDTO.setIDBebida_IngredientesDTO(IDBebida_IngredientesVIEW);
+        objIngredientesDTO.setIDPrato_IngredientesDTO(IDPrato_IngredientesVIEW);
+        objIngredientesDTO.setNome_IngredientesDTO(Nome_IngredientesVIEW);
+        objIngredientesDTO.setUnidadeMedida_IngredientesDTO(UnidadeMedida_IngredientesVIEW);
+        
+        IngredientesDAO objIngredientesDAO = new IngredientesDAO();
+        objIngredientesDAO.cadastrarIngrediente(objIngredientesDTO);
+    }
 }
