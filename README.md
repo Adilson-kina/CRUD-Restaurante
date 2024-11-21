@@ -40,3 +40,8 @@ Este projeto Java implementa um sistema de gerenciamento para um restaurante, pe
      ant run
      ```
    **OU Abra o projeto no NetBeans, compile e rode**
+
+## Projeto Em Execução
+[Tela Inicial](./assets/Home.png)
+[Tela de Inserção de dados](./assets/insertion.png)
+[Tela de pesquisa de dados](./assets/search.png)
