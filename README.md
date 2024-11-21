@@ -42,6 +42,6 @@ Este projeto Java implementa um sistema de gerenciamento para um restaurante, pe
    **OU Abra o projeto no NetBeans, compile e rode**
 
 ## Projeto Em Execução
-[Tela Inicial](./assets/Home.png)
-[Tela de Inserção de dados](./assets/insertion.png)
-[Tela de pesquisa de dados](./assets/search.png)
+![Tela Inicial](./assets/Home.png) <br>
+![Tela de Inserção de dados](./assets/insertion.png) <br>
+![Tela de pesquisa de dados](./assets/search.png)
