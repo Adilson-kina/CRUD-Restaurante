@@ -27,7 +27,7 @@ Este projeto Java implementa um sistema de gerenciamento para um restaurante, pe
 2. **Clonar o repositório:**
      Use o comando abaixo para clonar o repositorio na branch mais atual
      ```terminal
-     git clone https://github.com/Adilson-kina/CRUD-Restaurante.git -b Refactored
+     git clone https://github.com/Adilson-kina/CRUD-Restaurante.git
      ```
 3. **Executar o database**
      ```terminal
